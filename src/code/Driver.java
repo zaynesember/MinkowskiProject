@@ -1,8 +1,9 @@
 package code;
 
+import ui.*;
+
 public class Driver {
 	public static void main(String [] args){
-		System.out.println("Test");
-		System.out.println("Testing again");
+		new GUI();
 	}
 }
