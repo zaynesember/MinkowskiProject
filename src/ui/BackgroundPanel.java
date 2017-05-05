@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class BackgroundPanel extends JPanel{
 	
 	private int xSize = 800;

@@ -21,6 +21,8 @@ public class GUI {
 	
 	private BackgroundPanel _back;
 	
+	private PrimePanel _prime;
+	
 /**
  * Default constructor which sets up the GUI
  */
@@ -35,7 +37,15 @@ public class GUI {
 		_back.setVisible(true);
 		_back.setOpaque(true);
 		
+		_prime = new PrimePanel();
+		_prime.setSize(new Dimension(800, 800));
+		_prime.setVisible(true);
+		_prime.setOpaque(false);
+		//_prime.setBackground
+		
+		_frame.add(_prime);
 		_frame.add(_back);
+		
 
 		_menuBar = new JMenuBar();
 		
