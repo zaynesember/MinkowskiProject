@@ -1,18 +1,31 @@
+
 package ui;
 
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import code.*;
-
-public class EventHandler implements ActionListener {
+public class EventHandler implements ActionListener{
 	
 	private Logic l;
 	
-	public EventHandler(Logic log){ l = log; }
-	
-	@Override
-	public void actionPerformed(ActionEvent e){
-		
+	public EventHandler(Logic lg){
+		l = lg;
 	}
 	
+	public void actionPerformed(ActionEvent a){
+		switch(a.getActionCommand()){
+		
+		case "quit":
+			System.exit(0);
+			break;
+		
+		case "reset":
+			//implement
+			break;
+		
+		case "velocity":
+			l.getVelocity();
+			break;
+		}
+	}
 }

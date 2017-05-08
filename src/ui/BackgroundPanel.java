@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ public class BackgroundPanel extends JPanel{
 	
 	private int xSize = 800;
 	private int ySize = 800;
+	private Font axisLabel = new Font("calibri", Font.PLAIN, 20);
 	
 	public BackgroundPanel(){}
 	
@@ -17,12 +19,18 @@ public class BackgroundPanel extends JPanel{
 		int xCenter = xWidth/2;
 		g.setColor(Color.black);
 		g.drawLine(xCenter, 0, xCenter, ySize);
+		
+		g.setFont(axisLabel);
+		g.drawString("x", 15, 390);
 	}
 	
 	private void paintYAxis(Graphics g, int yWidth){
 		int yCenter = yWidth/2;
 		g.setColor(Color.black);
 		g.drawLine(0, yCenter, xSize, yCenter);
+
+		g.setFont(axisLabel);
+		g.drawString("ct", 380, 17);
 	}
 	
 	//allow for rescaling at some point
