@@ -60,17 +60,15 @@ public class GUI {
 		JMenu file = new JMenu("File");
 			JMenuItem quit = new JMenuItem("Quit");
 			JMenuItem reset = new JMenuItem("Reset");
-			JMenuItem velocity = new JMenuItem("Set Velocity");
+
 			quit.setActionCommand("quit");
 			quit.addActionListener(eh);
 			reset.setActionCommand("reset");
 			reset.addActionListener(eh);
-			velocity.setActionCommand("velocity");
-			velocity.addActionListener(eh);
 			
 			file.add(quit);
 			file.add(reset);
-			file.add(velocity);
+
 				
 		_menuBar.add(file);
 		
