@@ -1,12 +1,12 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+
+import code.SpecRel;
+
 
 /**
  * Class that creates the graphical user interface.
@@ -26,6 +26,8 @@ public class GUI {
 	
 	private Logic l;
 	
+	JTextField velField;
+	
 /**
  * Default constructor which sets up the GUI
  */
@@ -34,10 +36,10 @@ public class GUI {
 		l.addObserver(this);
 		EventHandler eh = new EventHandler(l);
 		
-		
 		_frame = new JFrame("Minkowksi Diagram Program");
+		_frame.setLayout(null);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		_frame.setSize(800, 875);
+		_frame.setSize(800, 1075);
 		
 		_back = new BackgroundPanel();
 		_back.setSize(new Dimension(800, 800));
@@ -72,6 +74,31 @@ public class GUI {
 				
 		_menuBar.add(file);
 		
+		JPanel inputPanel = new JPanel();
+			inputPanel.setSize(800, 275);
+			inputPanel.setBounds(0, 800, 800, 275);
+			
+		JTextPane velText = new JTextPane();
+			velText.setText("Velocity:");
+		
+		velField = new JTextField();
+			velField.setText(Double.toString(SpecRel.velocity));
+			velField.setPreferredSize(new Dimension(50, 20));
+		
+		JTextPane cText = new JTextPane();
+			cText.setText("c");
+		
+		JButton velButton = new JButton("OK");
+			velButton.addActionListener(eh);
+			velButton.setActionCommand("velocity");
+			
+		inputPanel.add(velText);
+		inputPanel.add(velField);
+		inputPanel.add(cText);
+		inputPanel.add(velButton);
+		
+		_frame.add(inputPanel);
+		
 		_frame.setJMenuBar(_menuBar);
 		_frame.setResizable(false);
 		//_frame.pack();
@@ -79,7 +106,7 @@ public class GUI {
 	}
 	
 	public double getVelocityInput(){
-		String s = (String) JOptionPane.showInputDialog("Set Velocity: \n" + "Ex. Enter 0.95 for velocity of 0.95c");
+		String s = (String) velField.getText();
 		try {
 			if(Double.valueOf(s) > 0 && Double.valueOf(s) <= 1){
 				return Double.valueOf(s);
@@ -91,12 +118,14 @@ public class GUI {
 			
 				else{
 					JOptionPane.showMessageDialog(null, "Enter a number between 0 and 1. \n" + "Velocity set to 0.5c. \nTry again!", "Warning: " + " Not A Valid Number", JOptionPane.INFORMATION_MESSAGE);
+					velField.setText(Double.toString(SpecRel.velocity));
 				}
 			return 0.5;
 			}
 		} catch (NumberFormatException e){
 			System.out.println("Not a number");
 			JOptionPane.showMessageDialog(null, "Velocity set to 0.5c. Try again!", "NumberFormatException: " + " Not A Number", JOptionPane.INFORMATION_MESSAGE);
+			velField.setText(Double.toString(SpecRel.velocity));
 			return 0.5; 
 		}
 	}
