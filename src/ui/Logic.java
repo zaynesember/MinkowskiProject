@@ -11,7 +11,7 @@ public class Logic {
 	}
 	
 	public void updatePrimePanel(){
-		ui = new GUI();
+		GUI._prime.repaint();
 	}
 	
 	public void setVelocity(double v){

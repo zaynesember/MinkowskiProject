@@ -22,7 +22,7 @@ public class GUI {
 	
 	private BackgroundPanel _back;
 	
-	PrimePanel _prime;
+	static PrimePanel _prime;
 	
 	private Logic l;
 	
